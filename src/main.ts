@@ -40,7 +40,7 @@ form.addEventListener('submit', async (e) => {
       <title>Generated Code</title>
       <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body class="m-2">
       ${code}
     </body>
   </html>`;
