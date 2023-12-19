@@ -1,10 +1,10 @@
 import './style.css';
-import { openai } from './openai';
+import { openai } from './functions/openai';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
-import { getLocalStorageItemWithPrompt } from './getLocalStorageItemWithPrompt.ts';
+import { getLocalStorageItemWithPrompt } from './functions/getLocalStorageItemWithPrompt.ts';
 import { createIcons, Sparkles, Trash2, XCircle } from 'lucide';
-import { createTimedUpdateIframe } from './createTimedUpdateIframe';
-import { renderMessages } from './renderMessages';
+import { createTimedUpdateIframe } from './functions/createTimedUpdateIframe';
+import { renderMessages } from './functions/renderMessages';
 
 createIcons({
   attrs: {
@@ -66,7 +66,7 @@ let messages: ChatCompletionMessageParam[] = [
     content: promptSystem,
   },
 ];
-let code = '';
+let codeBalise = '';
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -113,11 +113,10 @@ form.addEventListener('submit', async (e) => {
   });
 
   const onNewChunck = createTimedUpdateIframe();
-
+  let code = '';
   for await (const message of response) {
     const isDone = message.choices[0].finish_reason === 'stop';
     const token = message.choices[0].delta.content;
-
     if (isDone) {
       form.reset();
       fieldset.disabled = false;
@@ -130,12 +129,12 @@ form.addEventListener('submit', async (e) => {
     }
 
     code += token;
-
     onNewChunck(code, iframeGenerateCode);
   }
+  codeBalise = code;
 
   if (!code) {
-    alert('Erreur: Aucun code généré');
+    alert('Error: No code generated');
     return;
   }
 
@@ -150,6 +149,7 @@ trash.addEventListener('click', (e) => {
       content: promptSystem,
     },
   ];
+  codeBalise = '';
   ulMessages.innerHTML = '';
   iframeGenerateCode.srcdoc = '';
 });
@@ -164,7 +164,7 @@ sparkles.addEventListener('click', (e) => {
   <link rel="stylesheet" href="./lib/prism.css" />
   <script src="./lib/prism.js"></script>
   <pre><code type="text/plain" class="language-html">${escapeHtml(
-    code
+    codeBalise
   )}</code></pre>
 `;
 });

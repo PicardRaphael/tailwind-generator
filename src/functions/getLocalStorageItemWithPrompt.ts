@@ -1,4 +1,4 @@
-import type { StorageItemPromptConfig } from './types';
+import type { StorageItemPromptConfig } from '../types/types';
 
 export const getLocalStorageItemWithPrompt = ({
   localStorageKey,
