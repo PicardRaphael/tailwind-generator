@@ -5,6 +5,12 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/prism.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/themes/prism.css"
+      rel="stylesheet"
+    />
+
     <title>Tailwind Generator App</title>
   </head>
   <body class="h-full">
@@ -14,31 +20,66 @@
     >
       <form
         id="generate-form"
-        class="max-w-md bg-gray-300 p-2 w-full rounded shadow-md"
+        class="max-w-md bg-zinc-950 p-3 w-full rounded shadow-md"
       >
         <ul
           id="messages"
-          class="flex flex-col gap-1 text-xs max-h-[150px] overflow-auto"
+          class="flex flex-col gap-1 text-xs max-h-[150px] overflow-auto mb-2"
         ></ul>
-        <fieldset class="flex items-center gap-2 w-full">
-          <textarea
-            type="text"
-            id="prompt"
-            name="prompt"
-            class="bg-gray-50 border border-gray-300 disabled:bg-gray-500 disabled:cursor-not-allowed text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="A beautiful landing page"
-            required
-          ></textarea>
-
+        <fieldset class="w-full">
+          <div class="flex items-center gap-2 mb-3">
+            <textarea
+              type="text"
+              id="prompt"
+              name="prompt"
+              class="bg-zinc-950 text-gray-400 border-2 border-violet-800 disabled:bg-gray-500 disabled:cursor-not-allowed text-sm rounded-lg focus:border-violet-600 focus:outline-none block w-full h-[70px] p-2.5"
+              placeholder="A beautiful landing page"
+              required
+            ></textarea>
+            <div class="flex flex-col gap-2">
+              <button
+                type="button"
+                id="sparkles"
+                class="text-gray-400 hover:text-zinc-950 bg-zinc-800 hover:bg-violet-600 rounded-lg px-2 py-1"
+              >
+                <i data-lucide="sparkles"></i>
+              </button>
+              <button
+                type="button"
+                id="trash"
+                class="text-gray-400 hover:text-zinc-950 bg-zinc-800 hover:bg-violet-600 rounded-lg px-2 py-1"
+              >
+                <i data-lucide="trash2"></i>
+              </button>
+            </div>
+          </div>
           <button
             type="submit"
-            class="text-white bg-blue-700 disabled:bg-gray-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+            class="w-full text-white bg-violet-800 disabled:bg-gray-500 hover:bg-violet-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
           >
             Generate
           </button>
         </fieldset>
       </form>
     </div>
+    <div
+      id="modal"
+      class="hidden fixed inset-0 bg-zinc-950 bg-opacity-80 flex items-center justify-center"
+    >
+      <div class="bg-zinc-800 p-4 rounded-lg shadow-lg relative w-1/2 h-3/4">
+        <iframe
+          id="modal-iframe"
+          class="w-full h-full bg-white rounded"
+        ></iframe>
+        <button
+          id="close-modal"
+          class="absolute -top-10 -right-10 m-2 text-violet-600 hover:text-violet-400"
+        >
+          <i data-lucide="x-circle" class="text-2xl"></i>
+        </button>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
+    <script src="./src/prism.js"></script>
   </body>
 </html>

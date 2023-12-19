@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  lucide:
+    specifier: ^0.298.0
+    version: 0.298.0
   openai:
     specifier: ^4.23.0
     version: 4.23.0
@@ -771,6 +774,10 @@ packages:
   /lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
+
+  /lucide@0.298.0:
+    resolution: {integrity: sha512-FphzOd0gEJftlSHjEz0BEJW4nInpycRJF7xwr0n/36MOsWiDuRRs7QuJwB4qJvaDwggArPzXFKTjunNR5Gz/TQ==}
+    dev: false
 
   /md5@2.3.0:
     resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
