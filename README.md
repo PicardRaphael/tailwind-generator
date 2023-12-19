@@ -28,11 +28,6 @@ Tailwind CSS
 TypeScript
 Vite
 OpenAI SDK
-Create a .env file at the root of your project with your OpenAI API key:
-
-```env
-VITE_OPENAI_API_KEY=your_api_key_here
-```
 
 Obtain an API key from [OpenAI](https://platform.openai.com/docs/overview).
 
